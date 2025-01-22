@@ -12,4 +12,6 @@ E dentro do arquivo colocar esse comando:
 
 Nesse exemplo eu coloquei para ele repetir a cada 15 min, e na segunda parte está o diretório do arquivo PHP
 
+A Api utilizada para essa aplicação foi a WeatherAPI
+
 :)
