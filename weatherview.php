@@ -37,6 +37,7 @@ try {
     die("Erro ao conectar ou consultar o banco: " . $e->getMessage());
 }
 ?>
+
 <!DOCTYPE html>
 <html lang="pt-br">
 
@@ -143,6 +144,7 @@ try {
         const temperatures = weatherData.map(row => parseFloat(row.temperature));
         const humidities = weatherData.map(row => parseFloat(row.humidity));
         const windSpeeds = weatherData.map(row => parseFloat(row.wind_speed));
+        const precipitations = weatherData.map(row => parseFloat(row.precip_mm));
 
         // Gráfico
         const ctx = document.getElementById('weatherChart').getContext('2d');
@@ -171,6 +173,14 @@ try {
                         data: windSpeeds,
                         borderColor: 'rgba(75, 192, 192, 1)',
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Chuva (mm)',
+                        data: precipitations,
+                        borderColor: 'rgba(153, 102, 255, 1)',
+                        backgroundColor: 'rgba(153, 102, 255, 0.2)',
                         fill: true,
                         tension: 0.4
                     }

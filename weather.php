@@ -30,14 +30,15 @@ try {
     $temperature = $data['current']['temp_c'];
     $condition = $data['current']['condition']['text'];
     $humidity = $data['current']['humidity'];
+    $precip_mm = $data['current']['precip_mm'];
     $windSpeed = $data['current']['wind_kph'];
     $observationTime = $data['current']['last_updated'];
     $icon = $data['current']['condition']['icon'];
 
     // Insere os dados no banco
     $stmt = $pdo->prepare("
-    INSERT INTO clima (city, region, temperature, `condition`, humidity, wind_speed, observation_time, icon)
-    VALUES (:city, :region, :temperature, :condition, :humidity, :wind_speed, :observation_time, :icon)
+    INSERT INTO clima (city, region, temperature, `condition`, humidity, precip_mm, wind_speed, observation_time, icon)
+    VALUES (:city, :region, :temperature, :condition, :humidity, :precip_mm, :wind_speed, :observation_time, :icon)
     ");
 
     $stmt->execute([
@@ -46,9 +47,10 @@ try {
         ':temperature' => $temperature,
         ':condition' => $condition,
         ':humidity' => $humidity,
+        ':precip_mm' => $precip_mm,
         ':wind_speed' => $windSpeed,
         ':observation_time' => $observationTime,
-        ':icon' => $icon // Insere o ícone agora
+        ':icon' => $icon
     ]);
 
     echo "Dados do tempo salvos com sucesso!";
