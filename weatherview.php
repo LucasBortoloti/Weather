@@ -145,6 +145,9 @@ try {
         const humidities = weatherData.map(row => parseFloat(row.humidity));
         const windSpeeds = weatherData.map(row => parseFloat(row.wind_speed));
         const precipitations = weatherData.map(row => parseFloat(row.precip_mm));
+        const uv = weatherData.map(row => parseFloat(row.uv));
+        const feelslike_c = weatherData.map(row => parseFloat(row.feelslike_c));
+        const cloud = weatherData.map(row => parseFloat(row.cloud));
 
         // Gráfico
         const ctx = document.getElementById('weatherChart').getContext('2d');
@@ -155,7 +158,7 @@ try {
                 datasets: [{
                         label: 'Temperatura (°C)',
                         data: temperatures,
-                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderColor: 'rgb(255, 24, 74)',
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         fill: true,
                         tension: 0.4
@@ -171,16 +174,40 @@ try {
                     {
                         label: 'Vento (km/h)',
                         data: windSpeeds,
-                        borderColor: 'rgba(75, 192, 192, 1)',
-                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgb(4, 94, 94)',
+                        backgroundColor: 'rgba(7, 170, 170, 0.2)',
                         fill: true,
                         tension: 0.4
                     },
                     {
                         label: 'Chuva (mm)',
                         data: precipitations,
-                        borderColor: 'rgba(153, 102, 255, 1)',
+                        borderColor: 'rgb(80, 35, 168)',
                         backgroundColor: 'rgba(153, 102, 255, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Raios UV',
+                        data: uv,
+                        borderColor: 'rgb(0, 17, 255)',
+                        backgroundColor: 'rgba(144, 91, 248, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Sensação Térmica (°C)',
+                        data: feelslike_c,
+                        borderColor: 'rgb(255, 73, 112)',
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        fill: true,
+                        tension: 0.4
+                    },
+                    {
+                        label: 'Nuvens',
+                        data: cloud,
+                        borderColor: 'rgb(6, 115, 187)',
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         fill: true,
                         tension: 0.4
                     }
