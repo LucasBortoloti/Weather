@@ -6,7 +6,7 @@ $user = 'Marcelo';
 $password = 'prefeiturajaragua';
 
 // URL da API WeatherAPI
-$apiKey = 'af9c22a542c04e7582a195448252001';
+$apiKey = 'coloque a key do WeatherAPI';
 $latitude = '-26.4853';
 $longitude = '-49.0672';
 $url = "http://api.weatherapi.com/v1/current.json?key=$apiKey&q=$latitude,$longitude&lang=pt";
