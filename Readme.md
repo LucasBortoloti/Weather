@@ -14,4 +14,8 @@ Nesse exemplo eu coloquei para ele repetir a cada 15 min, e na segunda parte est
 
 A Api utilizada para essa aplicação foi a WeatherAPI
 
+Print do projeto:
+
+![printclima](https://github.com/user-attachments/assets/e89fb35d-8253-4332-bce8-5e0a2b4548ab)
+
 :)
