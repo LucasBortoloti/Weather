@@ -29,20 +29,27 @@ try {
     $region = $data['location']['region'];
     $temperature = $data['current']['temp_c'];
     $feelslike_c = $data['current']['feelslike_c'];
+    $heatindex_c = $data['current']['heatindex_c'];
+    $dewpoint_c = $data['current']['dewpoint_c'];
     $condition = $data['current']['condition']['text'];
     $humidity = $data['current']['humidity'];
     $cloud = $data['current']['cloud'];
     $precip_mm = $data['current']['precip_mm'];
     $windSpeed = $data['current']['wind_kph'];
+    $wind_degree = $data['current']['wind_degree'];
     $wind_dir = $data['current']['wind_dir'];
+    $windchill_c = $data['current']['windchill_c'];
+    $gust_kph = $data['current']['gust_kph'];
+    $vis_km = $data['current']['vis_km'];
+    $pressure_mb = $data['current']['pressure_mb'];
     $uv = $data['current']['uv'];
     $observationTime = $data['current']['last_updated'];
     $icon = $data['current']['condition']['icon'];
 
     // Insere os dados no banco
     $stmt = $pdo->prepare("
-    INSERT INTO clima (city, region, temperature, feelslike_c, `condition`, humidity, cloud, precip_mm, wind_speed, wind_dir, uv, observation_time, icon)
-    VALUES (:city, :region, :temperature, :feelslike_c, :condition, :humidity, :cloud, :precip_mm, :wind_speed, :wind_dir, :uv, :observation_time, :icon)
+    INSERT INTO clima (city, region, temperature, feelslike_c, heatindex_c, dewpoint_c ,`condition`, humidity, cloud, precip_mm, wind_speed, wind_degree, wind_dir, windchill_c, gust_kph, vis_km, pressure_mb, uv, observation_time, icon)
+    VALUES (:city, :region, :temperature, :feelslike_c, :heatindex_c, :dewpoint_c, :condition, :humidity, :cloud, :precip_mm, :wind_speed, :wind_degree, :wind_dir, :windchill_c, :gust_kph, :vis_km, :pressure_mb, :uv, :observation_time, :icon)
     ");
 
     $stmt->execute([
@@ -50,12 +57,19 @@ try {
         ':region' => $region,
         ':temperature' => $temperature,
         ':feelslike_c' => $feelslike_c,
+        ':heatindex_c' => $heatindex_c,
+        ':dewpoint_c' => $dewpoint_c,
         ':condition' => $condition,
         ':humidity' => $humidity,
         ':cloud' => $cloud,
         ':precip_mm' => $precip_mm,
         ':wind_speed' => $windSpeed,
+        ':wind_degree' => $wind_degree,
         ':wind_dir' => $wind_dir,
+        ':windchill_c' => $windchill_c,
+        ':gust_kph' => $gust_kph,
+        ':vis_km' => $vis_km,
+        ':pressure_mb' => $pressure_mb,
         ':uv' => $uv,
         ':observation_time' => $observationTime,
         ':icon' => $icon
